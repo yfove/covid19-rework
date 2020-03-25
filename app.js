@@ -12,18 +12,39 @@ var map = new mapboxgl.Map({
   center: [0, 20]
 });
 
+const getColorFromCount = count => {
+  if (count >= 7000) {
+    return "maroon";
+  }
+  if (count >= 2000) {
+    return "darkred";
+  }
+  if (count >= 1000) {
+    return "firebrick";
+  }
+  if (count >= 500) {
+    return "crimson";
+  }
+  if (count >= 10) {
+    return "indianred";
+  }
+  return "pink";
+};
+
 fetch("https://coronavirus-tracker-api.herokuapp.com/v2/locations")
   .then(response => response.json()) // (generic response) getting the actual data we have to convert to .json
   .then(data => {
     const reports = data.locations;
 
-    // console.log(reports);
+    console.log(reports);
 
     reports.forEach(report => {
       const { latest, coordinates } = report;
       console.log(latest, coordinates);
       // const currentPlace = coordinates;
-      new mapboxgl.Marker({})
+      new mapboxgl.Marker({
+        color: getColorFromCount(latest.confirmed)
+      })
         .setLngLat([coordinates.longitude, coordinates.latitude])
         .addTo(map);
     });
