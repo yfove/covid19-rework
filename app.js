@@ -8,8 +8,8 @@ mapboxgl.accessToken = mapbox_token;
 var map = new mapboxgl.Map({
   container: "map",
   style: "mapbox://styles/mapbox/dark-v10",
-  zoom: 1.5,
-  center: [0, 20]
+  zoom: 2.0,
+  center: [120, 20]
 });
 
 const getColorFromCount = count => {
@@ -43,6 +43,7 @@ fetch("https://coronavirus-tracker-api.herokuapp.com/v2/locations")
       console.log(latest, coordinates);
       // const currentPlace = coordinates;
       new mapboxgl.Marker({
+        size: "large",
         color: getColorFromCount(latest.confirmed)
       })
         .setLngLat([coordinates.longitude, coordinates.latitude])
