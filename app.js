@@ -13,18 +13,29 @@ var map = new mapboxgl.Map({
 });
 
 fetch("https://coronavirus-tracker-api.herokuapp.com/v2/locations")
-  .then(response => response.json())
+  .then(response => response.json()) // (generic response) getting the actual data we have to convert to .json
   .then(data => {
-    console.log(data);
+    const reports = data.locations;
+
+    // console.log(reports);
+
+    reports.forEach(report => {
+      const { latest, coordinates } = report;
+      console.log(latest, coordinates);
+      // const currentPlace = coordinates;
+      new mapboxgl.Marker({})
+        .setLngLat([coordinates.longitude, coordinates.latitude])
+        .addTo(map);
+    });
   });
 
 // fetch("https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/stats", {
 //   method: "GET",
 //   headers: {
-// "x-rapidapi-host": "covid-19-coronavirus-statistics.p.rapidapi.com",
-// "x-rapidapi-key": "395feb7c3emshb4a91900aa9f376p161dc0jsn52d04d06ce2e"
+//     "x-rapidapi-host": "covid-19-coronavirus-statistics.p.rapidapi.com",
+//     "x-rapidapi-key": "395feb7c3emshb4a91900aa9f376p161dc0jsn52d04d06ce2e"
 //   }
-// });
+// })
 //   .then(response => response.json()) // (generic response) getting the actual data we have to convert to .json
 //   .then(data => {
 //     const report = data.data.covid19Stats;
@@ -34,13 +45,9 @@ fetch("https://coronavirus-tracker-api.herokuapp.com/v2/locations")
 //     report.forEach(report => {
 //       const { confirmed, keyId } = report;
 //       console.log(confirmed, keyId);
-//       new mapboxgl.Marker({})
-//         .setLngLat([report.longitude, report.latitude])
-//         .addTo(map);
+//       new mapboxgl.Marker({}).setLngLat([0, 0]).addTo(map);
 //     });
 //   })
 //   .catch(error => {
 //     console.log(error);
 //   });
-
-// console.log(stats);
