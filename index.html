@@ -10,7 +10,7 @@
     />
     <link rel="stylesheet" href="style.css" />
     <link
-      href="https://fonts.googleapis.com/css?family=Merriweather|Montserrat|Playfair+Display&display=swap"
+      href="https://fonts.googleapis.com/css?family=Merriweather|Montserrat|IBM+Plex+Sans:700|Playfair+Display&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -19,9 +19,24 @@
     <h1>Coronavirus Spread Visualization</h1>
     <p>
       A real-time map showing the spread of Covid-19 around the world using
-      Covid-19 Statistics API compiled by John Hopkins University.
+      Covid-19 Statistics API compiled by
+      <a class="link" href="https://coronavirus.jhu.edu/"
+        >John Hopkins University</a
+      >
+      .
     </p>
   </header>
+  <section class="stats wrapper">
+    <form action="" id="searchForm">
+      <input
+        type="text"
+        class="form-control"
+        id="searchText"
+        placeholder="Italy"
+      />
+    </form>
+    Country
+  </section>
   <body>
     <div id="map"></div>
 
