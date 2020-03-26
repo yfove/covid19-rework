@@ -5,7 +5,7 @@ const mapbox_token =
 
 mapboxgl.accessToken = mapbox_token;
 
-var map = new mapboxgl.Map({
+const map = new mapboxgl.Map({
   container: "map",
   style: "mapbox://styles/mapbox/dark-v10",
   zoom: 2.0,
@@ -39,14 +39,30 @@ fetch("https://coronavirus-tracker-api.herokuapp.com/v2/locations")
     console.log(reports);
 
     reports.forEach(report => {
-      const { latest, coordinates } = report;
+      const { latest, country, last_updated, coordinates } = report;
       console.log(latest, coordinates);
       // const currentPlace = coordinates;
-      new mapboxgl.Marker({
+      //create makers
+      const marker = new mapboxgl.Marker({
         size: "large",
         color: getColorFromCount(latest.confirmed)
       })
         .setLngLat([coordinates.longitude, coordinates.latitude])
+        .setPopup(
+          new mapboxgl.Popup().setText(
+            "Country: " +
+              country +
+              "\n" +
+              "Confimed Cases: " +
+              latest.confirmed +
+              "\n" +
+              "Deaths: " +
+              latest.deaths +
+              "\n" +
+              "Updated: " +
+              last_updated
+          )
+        )
         .addTo(map);
     });
   });
