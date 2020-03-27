@@ -1,5 +1,16 @@
 import "https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js";
 
+// alert("Document ready");
+
+const btn = document
+  .querySelector("button")
+  .addEventListener("click", function() {
+    alert("still in progress");
+    // console.log(this);
+    // let buttonInnerHTML = this.innerHTML;
+    // switch(buttonInput)
+  });
+
 const mapbox_token =
   "pk.eyJ1IjoiY3VydGlzY2hhdCIsImEiOiJjazg2dHo2dTIwbG50M2RvOHU5aGU0a2Y1In0.ajuXbkqhdPXTqujBc7c_QQ";
 
@@ -36,12 +47,11 @@ fetch("https://coronavirus-tracker-api.herokuapp.com/v2/locations")
   .then(data => {
     const reports = data.locations;
 
-    console.log(reports);
+    // console.log(reports);
 
     reports.forEach(report => {
       const { latest, country, last_updated, coordinates } = report;
-      console.log(latest, coordinates);
-      // const currentPlace = coordinates;
+      // console.log(latest, coordinates);
       //create makers
       const marker = new mapboxgl.Marker({
         size: "large",
@@ -66,3 +76,5 @@ fetch("https://coronavirus-tracker-api.herokuapp.com/v2/locations")
         .addTo(map);
     });
   });
+
+const worldStatistics = document.creat;
