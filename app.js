@@ -1,15 +1,6 @@
 import "https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js";
 
-// alert("Document ready");
-
-const btn = document
-  .querySelector("button")
-  .addEventListener("click", function() {
-    alert("still in progress");
-    // console.log(this);
-    // let buttonInnerHTML = this.innerHTML;
-    // switch(buttonInput)
-  });
+// maptoken plugin
 
 const mapbox_token =
   "pk.eyJ1IjoiY3VydGlzY2hhdCIsImEiOiJjazg2dHo2dTIwbG50M2RvOHU5aGU0a2Y1In0.ajuXbkqhdPXTqujBc7c_QQ";
@@ -42,10 +33,24 @@ const getColorFromCount = count => {
   return "pink";
 };
 
-fetch("https://coronavirus-tracker-api.herokuapp.com/v2/locations")
-  .then(response => response.json()) // (generic response) getting the actual data we have to convert to .json
+// search query
+const myForm = document.getElementById('myForm')
+myForm.addEventListener('submit',function(e){
+  e.preventDefault()
+  let country = document.getElementById('country').value
+  alert(country);
+})
+
+// John Hopkins Coronavirus API
+const url = "https://coronavirus-tracker-api.herokuapp.com/v2/locations"
+
+
+fetch(url)
+  .then(res => res.json()) // (generic response) getting the actual data we have to convert to .json
   .then(data => {
-    console.log(data)
+    const length = data.length;
+    const index = length - 1;
+
     let totalcases = data.latest;
     let totalconfirmed = totalcases.confirmed;
     let totaldeaths = totalcases.deaths;
@@ -61,8 +66,6 @@ fetch("https://coronavirus-tracker-api.herokuapp.com/v2/locations")
     // let update = data.location.last_update;
     // console.log(population)
     const reports = data.locations;
-
-
 
     console.log(reports);
 
@@ -92,5 +95,11 @@ fetch("https://coronavirus-tracker-api.herokuapp.com/v2/locations")
         )
         .addTo(map);
     });
-  
   });
+
+
+
+
+
+
+

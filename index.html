@@ -11,7 +11,7 @@
     href="https://fonts.googleapis.com/css?family=Merriweather|Montserrat|IBM+Plex+Sans:700|Playfair+Display&display=swap"
     rel="stylesheet" />
 </head>
-<header>
+<header class="">
   <!-- <h1>Corona Virus Map</h1> -->
   <h1>Coronavirus Spread Visualization</h1>
   <p>
@@ -21,21 +21,43 @@
     .
   </p>
 </header>
-<section class="stats wrapper">
-  <input class="inputText" placeholder="Japan" action="" type="text" id="text1" />
-  <button id="btn" class="submit" type="button" ">
-      statistics
-    </button>
-  </section>
-  <section class=" statistics">
-    <h1>total confirmed cases</h1>
-    <h3 id="totalconfirmed"></h3>
-    <h1>total deaths</h1>
-    <h3 id="totaldeaths"></h3>
-    <h1>total recoveries</h1>
-    <h3 id="totalrecovered">
 
-    </h3>
+<section class="stats wrapper">
+  <h1>Query country results</h1>
+  <form id="myForm">
+    <input type="text" id="country" placeholder="Country Name" required>
+    <input type="submit" value="submit" class="submit id=" btn">
+  </form>
+</section>
+
+<section class="statistics">
+  <div class="confirmed">
+    <h2>Total Confirmed Cases</h2>
+    <h3 id="totalconfirmed"></h3>
+  </div>
+  <div class="deaths">
+    <h2>Total Deaths</h2>
+    <h3 id="totaldeaths"></h3>
+  </div>
+  <div class="recovered">
+    <h2>Total Recoveries</h2>
+    <h3 id="totalrecovered"></h3>
+  </div>
+</section>
+
+<section class="statistics">
+  <div class="confirmed">
+    <h2>Total Confirmed Cases</h2>
+    <h3 id="totalconfirmed"></h3>
+  </div>
+  <div class="deaths">
+    <h2>Total Deaths</h2>
+    <h3 id="totaldeaths"></h3>
+  </div>
+  <div class="recovered">
+    <h2>Total Recoveries</h2>
+    <h3 id="totalrecovered"></h3>
+  </div>
 </section>
 
 <body>
