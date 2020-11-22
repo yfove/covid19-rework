@@ -3,6 +3,12 @@
   height: 100vh;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   text-align: center;
   background-color: rgb(24, 23, 23);
@@ -17,6 +23,11 @@ h1 {
   letter-spacing: 1px;
   padding-top: 20px;
   margin: 0;
+}
+
+h3 {
+  color: rgb(194, 76, 76);
+  padding: 1rem;
 }
 
 p {

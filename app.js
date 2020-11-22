@@ -45,9 +45,26 @@ const getColorFromCount = count => {
 fetch("https://coronavirus-tracker-api.herokuapp.com/v2/locations")
   .then(response => response.json()) // (generic response) getting the actual data we have to convert to .json
   .then(data => {
+    console.log(data)
+    let totalcases = data.latest;
+    let totalconfirmed = totalcases.confirmed;
+    let totaldeaths = totalcases.deaths;
+    let totalrecovered = totalcases.recovered;
+    console.log (totalcases)
+
+    // simple display 
+    document.getElementById('totalconfirmed').innerHTML = totalconfirmed.toLocaleString('en');
+    document.getElementById('totaldeaths').innerHTML = totaldeaths.toLocaleString('en');
+    document.getElementById('totalrecovered').innerHTML = totalrecovered.toLocaleString('en');
+
+    // let population = data.location.country_population;
+    // let update = data.location.last_update;
+    // console.log(population)
     const reports = data.locations;
 
-    // console.log(reports);
+
+
+    console.log(reports);
 
     reports.forEach(report => {
       const { latest, country, last_updated, coordinates } = report;
@@ -75,6 +92,5 @@ fetch("https://coronavirus-tracker-api.herokuapp.com/v2/locations")
         )
         .addTo(map);
     });
+  
   });
-
-const worldStatistics = document.creat;

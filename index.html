@@ -1,50 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Covid-19 Map</title>
-    <link
-      href="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Merriweather|Montserrat|IBM+Plex+Sans:700|Playfair+Display&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <header>
-    <!-- <h1>Corona Virus Map</h1> -->
-    <h1>Coronavirus Spread Visualization</h1>
-    <p>
-      A real-time map showing the spread of Covid-19 around the world using
-      Covid-19 Statistics API compiled by
-      <a class="link" href="https://coronavirus.jhu.edu/"
-        >John Hopkins University</a
-      >
-      .
-    </p>
-  </header>
-  <section class="stats wrapper">
-    <input
-      class="inputText"
-      placeholder="Japan"
-      action=""
-      type="text"
-      id="text1"
-    />
-    <button id="btn" class="submit" type="button" ">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Covid-19 Map</title>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link
+    href="https://fonts.googleapis.com/css?family=Merriweather|Montserrat|IBM+Plex+Sans:700|Playfair+Display&display=swap"
+    rel="stylesheet" />
+</head>
+<header>
+  <!-- <h1>Corona Virus Map</h1> -->
+  <h1>Coronavirus Spread Visualization</h1>
+  <p>
+    A real-time map showing the spread of Covid-19 around the world using
+    Covid-19 Statistics API compiled by
+    <a class="link" href="https://coronavirus.jhu.edu/">John Hopkins University</a>
+    .
+  </p>
+</header>
+<section class="stats wrapper">
+  <input class="inputText" placeholder="Japan" action="" type="text" id="text1" />
+  <button id="btn" class="submit" type="button" ">
       statistics
     </button>
   </section>
-  <body>
-    <div id="map"></div>
+  <section class=" statistics">
+    <h1>total confirmed cases</h1>
+    <h3 id="totalconfirmed"></h3>
+    <h1>total deaths</h1>
+    <h3 id="totaldeaths"></h3>
+    <h1>total recoveries</h1>
+    <h3 id="totalrecovered">
 
-    <script type="module" src="app.js"></script>
-    <!-- <script src="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js"></script> -->
-  </body>
-  <footer>
-    developed by www.youngfovere.com 🦕
-  </footer>
+    </h3>
+</section>
+
+<body>
+  <div id="map"></div>
+
+  <script type="module" src="app.js"></script>
+  <!-- <script src="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js"></script> -->
+</body>
+<footer>
+  developed by www.youngfovere.com 🦕
+</footer>
+
 </html>
