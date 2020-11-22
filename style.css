@@ -60,7 +60,7 @@ header {
   color: rgb(213, 218, 223);
 }
 
-.inputText {
+#country {
   border-radius: 5px;
   border: none;
   background-color: rgb(59, 59, 59);

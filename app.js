@@ -38,36 +38,76 @@ const myForm = document.getElementById('myForm')
 myForm.addEventListener('submit',function(e){
   e.preventDefault()
   let country = document.getElementById('country').value
-  alert(country);
+  // alert(country);
+  alert("your submission is: " + country + ", this feature is currently in progress")
 })
+
+const url2 = "https://covid1910.p.rapidapi.com/data/dayone/country/"+country
+
+// new api
+// fetch(url2, {
+//   method: "GET",
+//   withCredentials: true,
+//   headers: {
+//   	"x-rapidapi-key": "395feb7c3emshb4a91900aa9f376p161dc0jsn52d04d06ce2e",
+// 	"x-rapidapi-host": "covid1910.p.rapidapi.com",
+// 	"useQueryString": true
+//   }
+// })
+// .then(res=>res.json())
+// .then(res => {
+//   console.log(res)
+//   const length = res.locations.length;
+//   const index = length - 1;
+
+//   let totalCasesCountry = document.getElementById('confirmed-country')
+//   let totalDeathCountry = document.getElementById('deaths-country')
+//   let totalRecoveredCountry = document.getElementById('recovered-country')
+
+//   totalCasesCountry.append(res[index].confirmed)
+//   totalDeathsCountry.append(res[index].confirmed)
+//   totalRecoveredCountry.append(res[index].confirmed)
+
+// })
 
 // John Hopkins Coronavirus API
 const url = "https://coronavirus-tracker-api.herokuapp.com/v2/locations"
 
 
 fetch(url)
-  .then(res => res.json()) // (generic response) getting the actual data we have to convert to .json
-  .then(data => {
-    const length = data.length;
+  .then(res => res.json()) // (generic response) getting the actual res we have to convert to .json
+  .then(res => {
+    const length = res.locations.length;
     const index = length - 1;
+    // console.log(index)
+    // console.log(res)
 
-    let totalcases = data.latest;
-    let totalconfirmed = totalcases.confirmed;
-    let totaldeaths = totalcases.deaths;
-    let totalrecovered = totalcases.recovered;
-    console.log (totalcases)
+
+    let totalCasesCountry = document.getElementById('confirmed-country')
+    let totalDeathCountry = document.getElementById('deaths-country')
+    let totalRecoveredCountry = document.getElementById('recovered-country')
+
+    // totalCasesCountry.append(res[index].confirmed)
+    // totalDeathsCountry.append(res[index].confirmed)
+    // totalRecoveredCountry.append(res[index].confirmed)
+
+    // total cases global
+    let totalCases = res.latest;
+    let totalConfirmed = totalCases.confirmed;
+    let totalDeaths = totalCases.deaths;
+    let totalRecovered = totalCases.recovered;
 
     // simple display 
-    document.getElementById('totalconfirmed').innerHTML = totalconfirmed.toLocaleString('en');
-    document.getElementById('totaldeaths').innerHTML = totaldeaths.toLocaleString('en');
-    document.getElementById('totalrecovered').innerHTML = totalrecovered.toLocaleString('en');
+    document.getElementById('totalconfirmed').innerHTML = totalConfirmed.toLocaleString('en');
+    document.getElementById('totaldeaths').innerHTML = totalDeaths.toLocaleString('en');
+    document.getElementById('totalrecovered').innerHTML = totalRecovered.toLocaleString('en');
 
-    // let population = data.location.country_population;
-    // let update = data.location.last_update;
+    // let population = res.location.country_population;
+    // let update = res.location.last_update;
     // console.log(population)
-    const reports = data.locations;
+    const reports = res.locations;
 
-    console.log(reports);
+    // console.log(reports);
 
     reports.forEach(report => {
       const { latest, country, last_updated, coordinates } = report;
