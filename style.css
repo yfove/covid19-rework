@@ -55,6 +55,10 @@ header {
   color: aliceblue;
 }
 
+.country-statistics {
+  margin: 20px;
+}
+
 .link {
   text-decoration: none;
   color: rgb(213, 218, 223);

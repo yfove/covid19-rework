@@ -39,36 +39,38 @@ myForm.addEventListener('submit',function(e){
   e.preventDefault()
   let country = document.getElementById('country').value
   // alert(country);
-  alert("your submission is: " + country + ", this feature is currently in progress")
+  // alert("your submission is: " + country + ", this feature is currently in progress")
+  console.log(country);
+  const url2 = "https://covid19.p.rapidapi.com/data/confirmed/country/"+country
+  
+  fetch(url2, {
+    method: "GET",
+    withCredentials: true,
+    headers: {
+      "x-rapidapi-key": "395feb7c3emshb4a91900aa9f376p161dc0jsn52d04d06ce2e",
+      "x-rapidapi-host": "covid1910.p.rapidapi.com",
+      "useQueryString": true
+    }
+  })
+  .then(res=>res.json())
+  .then(res => {
+    console.log(res)
+  
+    let totalCasesCountry = document.getElementById('country-name')
+    let countryConfirmed = document.getElementById('country-confirmed')
+    let updatedOn = document.getElementById('country-updated')
+  
+    totalCasesCountry.innerHTML = ''
+    countryConfirmed.innerHTML = ''
+    updatedOn.innerHTML = ''
+
+    totalCasesCountry.append(res[0].country.toUpperCase())
+    countryConfirmed.append(res[0].confirmed.toLocaleString('en'))
+    updatedOn.append(res[0].date)
+  
+  })
 })
 
-const url2 = "https://covid1910.p.rapidapi.com/data/dayone/country/"+country
-
-// new api
-// fetch(url2, {
-//   method: "GET",
-//   withCredentials: true,
-//   headers: {
-//   	"x-rapidapi-key": "395feb7c3emshb4a91900aa9f376p161dc0jsn52d04d06ce2e",
-// 	"x-rapidapi-host": "covid1910.p.rapidapi.com",
-// 	"useQueryString": true
-//   }
-// })
-// .then(res=>res.json())
-// .then(res => {
-//   console.log(res)
-//   const length = res.locations.length;
-//   const index = length - 1;
-
-//   let totalCasesCountry = document.getElementById('confirmed-country')
-//   let totalDeathCountry = document.getElementById('deaths-country')
-//   let totalRecoveredCountry = document.getElementById('recovered-country')
-
-//   totalCasesCountry.append(res[index].confirmed)
-//   totalDeathsCountry.append(res[index].confirmed)
-//   totalRecoveredCountry.append(res[index].confirmed)
-
-// })
 
 // John Hopkins Coronavirus API
 const url = "https://coronavirus-tracker-api.herokuapp.com/v2/locations"
@@ -83,13 +85,13 @@ fetch(url)
     // console.log(res)
 
 
-    let totalCasesCountry = document.getElementById('confirmed-country')
-    let totalDeathCountry = document.getElementById('deaths-country')
-    let totalRecoveredCountry = document.getElementById('recovered-country')
+    // let totalCasesCountry = document.getElementById('country-name')
+    // let totalDeathCountry = document.getElementById('country-confirmed')
+    // let updatedOn = document.getElementById('country-updated')
 
     // totalCasesCountry.append(res[index].confirmed)
-    // totalDeathsCountry.append(res[index].confirmed)
-    // totalRecoveredCountry.append(res[index].confirmed)
+    // countryConfirmed.append(res[index].confirmed)
+    // updatedOn.append(res[index].confirmed)
 
     // total cases global
     let totalCases = res.latest;
